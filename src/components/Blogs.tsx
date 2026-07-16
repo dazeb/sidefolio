@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { Heading } from "./Heading";
 import { Paragraph } from "./Paragraph";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 
 export const Blogs = ({ blogs }: { blogs: Blog[] }) => {
@@ -58,8 +58,8 @@ export const Blogs = ({ blogs }: { blogs: Blog[] }) => {
               <Image
                 src={blog.image}
                 alt="thumbnail"
-                height="200"
-                width="200"
+                height={200}
+                width={200}
                 objectFit="cover"
                 className="rounded-md object-cover h-40 w-60"
               />
@@ -73,7 +73,7 @@ export const Blogs = ({ blogs }: { blogs: Blog[] }) => {
                 <div className="flex space-x-2 flex-wrap mt-4">
                   {blog.tags?.map((tag, index) => (
                     <span
-                      key={`tag-${blog.slug}`}
+                      key={`tag-${blog.slug}-${tag}-${index}`}
                       className="text-xs px-1 py-0.5 text-secondary border border-neutral-200 bg-white rounded-md"
                     >
                       {tag}

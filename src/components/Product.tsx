@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { Heading } from "./Heading";
 import { Paragraph } from "./Paragraph";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 export const SingleProduct = ({ product }: { product: Product }) => {
   const [activeImage, setActiveImage] = useState<StaticImageData | string>(
@@ -31,8 +31,8 @@ export const SingleProduct = ({ product }: { product: Product }) => {
         <Image
           src={activeImage}
           alt="thumbnail"
-          height="1000"
-          width="1000"
+          height={1000}
+          width={1000}
           className="rounded-md object-contain"
         />
         <div className="absolute bottom-0 bg-white h-40 w-full [mask-image:linear-gradient(to_bottom,transparent,white)]" />
@@ -46,8 +46,8 @@ export const SingleProduct = ({ product }: { product: Product }) => {
             <Image
               src={image}
               alt="product thumbnail"
-              height="1000"
-              width="1000"
+              height={1000}
+              width={1000}
               className="h-14 w-16 md:h-40 md:w-60 object-cover object-top mr-4 mb-r border rounded-lg border-neutral-100"
             />
           </button>
@@ -86,9 +86,9 @@ export const SingleProduct = ({ product }: { product: Product }) => {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"
         >
           <path d="M5 12l14 0"></path>

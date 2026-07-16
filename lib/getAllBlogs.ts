@@ -1,23 +1,23 @@
-import glob from "fast-glob";
-import * as path from "path";
-
-async function importBlog(blogFileNames: any) {
-  let { meta, default: component } = await import(
-    `src/app/blog/${blogFileNames}`
+async function importBlog(slug: string) {
+  const { meta, default: component } = await import(
+    `../src/app/blog/${slug}/content.mdx`
   );
   return {
-    slug: blogFileNames.replace(/(\/content)?\.mdx$/, ""),
+    slug,
     ...meta,
     component,
   };
 }
 
 export async function getAllBlogs() {
-  let blogFileNames = await glob(["*.mdx", "*/content.mdx"], {
-    cwd: path.join(process.cwd(), "src/app/blog"),
-  });
+  const slugs = [
+    "clean-code",
+    "dark-mode-with-nextjs",
+    "how-to-win-clients",
+    "tailwindcss-tips-and-tricks",
+  ];
 
-  let blogs = await Promise.all(blogFileNames.map(importBlog));
+  const blogs = await Promise.all(slugs.map(importBlog));
 
   return blogs.sort((a, b) => {
     const dateA = new Date(a.date);

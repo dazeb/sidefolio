@@ -1,3 +1,33 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
+/*
+  Tailwind v4 defaults border color to currentColor.
+  Restore the v3 gray-200 default so bare `border` classes stay light.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, #e5e7eb);
+  }
+}
+
+@theme {
+  --color-primary: var(--color-neutral-700);
+  --color-secondary: var(--color-neutral-500);
+
+  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+  --background-image-gradient-conic: conic-gradient(
+    from 180deg at 50% 50%,
+    var(--tw-gradient-stops)
+  );
+}
+
+:root {
+  --neutral-500: var(--color-neutral-500);
+  --neutral-700: var(--color-neutral-700);
+}
